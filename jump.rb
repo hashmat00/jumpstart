@@ -517,21 +517,26 @@ Define a method, #time_string that accepts 3 arguments: hours, minutes, and seco
 
 def rubyify(sentence)
     new = sentence.downcase.gsub(/ /, "_")
-     new2 = new.gsub(/[\?\.]/, "")
+    # new = sentence.gsub!(/[\?.]/, "")
+    if new.include?("?")
+    	new.gsub!(/\?/, "")
+    end
+    if new.include?(".")
+    	new.gsub!(/\./, "")
+    end
     
-    #====== or use this solution
-    
-    # if new.include?("?")
-    # 	new.gsub!(/\?/, "")
-    # end
-    # if new.include?(".")
-    # 	new.gsub!(/\./, "")
-    # end
-    
-  new2
+  new
     
 end
 
+puts "---------Rubyify----------"
+puts rubyify("Leave the gun take the canoli.") == "leave_the_gun_take_the_canoli"
+puts rubyify("Driver roll up the partition please") == "driver_roll_up_the_partition_please"
+puts rubyify("Wanna get Cheeseboard pizza?") == "wanna_get_cheeseboard_pizza"
+
+
+
+# ----------------- Switch Roles!
 
 
 
@@ -540,12 +545,6 @@ end
 # Write a method, #key_value_swap, that accepts a hash as an argument and
 # returns a new hash with all the key / value pairs swapped. Do not use Hash#invert.
 
-puts "---------Rubyify----------"
-puts rubyify("Leave the gun take the canoli.") == "leave_the_gun_take_the_canoli"
-puts rubyify("Driver roll up the partition please") == "driver_roll_up_the_partition_please"
-puts rubyify("Wanna get Cheeseboard pizza?") == "wanna_get_cheeseboard_pizza"
-
-
 def key_value_swap(hash)
     key  = []
     value = []
@@ -553,21 +552,22 @@ def key_value_swap(hash)
     hash.each { |x, y| key << x}
     hash.each { |x, y| value << y}
     
-    i = 0
-    key2 = []
-    value2 = []
-    hash2 = Hash.new
-    until i == hash.length 
-     key2 << key[i]
-     value2 << value[i]
-     i+=1 
-    end 
+#    i = 0
+#    key2 = []
+#    value2 = []
+#    hash2 = Hash.new
+#    until i == hash.length 
+#     key2 << key[i]
+#     value2 << value[i]
+#     i+=1 
+#    end 
     
     # p value2
     # p key2
+    hash2 = Hash.new
     i = 0 
 	until i == hash.length 
-		hash2[value2[i]] = key2[i]
+		hash2[value[i]] = key[i]
 		i += 1
 		
 	end
@@ -575,8 +575,8 @@ def key_value_swap(hash)
  hash2
  
  
- #==or use one line solution
- hash.invert
+# or use one line solution
+# hash.invert
  
 end
 
@@ -584,3 +584,6 @@ puts "---------Key Value Swap----------"
 puts key_value_swap({a: :b, c: :d, e: :f}) == {b: :a, d: :c, f: :e}
 puts key_value_swap({1 => "string"}) == {"string" => 1}
 puts key_value_swap({a: :a, 1 => 1}) == {a: :a, 1 => 1}
+
+
+# ----------------- Read the solutions!
