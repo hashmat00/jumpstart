@@ -430,3 +430,158 @@ Define a method, #time_string that accepts 3 arguments: hours, minutes, and seco
 
 # p all_uniqs([1, 2, 3], [1, 2, 4]) # ==> [3, 4]
 # p all_uniqs([1, 2, 7], [1, 3, 8]) # ==> [2, 7, 3, 8]
+
+
+
+# =========================================================================================================================================================
+
+# def two_sum(array, target)
+#     array.each.with_index do |el, idx|
+#       second_idx = idx + 1 
+#         while second_idx < array.length
+#           return true if array[idx] + array[second_idx] == target
+#           second_idx += 1
+#         end
+#     end
+    
+# end
+
+
+# =========================================================================================================================================================
+
+# def two_sum(array, target)
+#     array.combination(2).any? { |a, b| a + b == target }
+# end
+
+
+# puts two_sum([1,2,3,4,5,6], 8) == true
+
+# =========================================================================================================================================================
+
+# def vowel_censor(string)
+    
+#     new_string = ""
+#     idx = 0
+    
+# 	    while idx < string.length
+# 		        if (string[idx] == 'a') || if (string[idx] == 'e') || if (string[idx] == 'u') || if (string[idx] == 'o') || if (string[idx] == 'i')
+# 		            new_string << 'X'
+# 		        else
+# 		           new_string << string[idx] 
+# 		        end
+# 		        idx += 1
+# 	    end
+    
+#     return new_string
+    
+# end
+
+# puts "---------Vowel Censor----------"
+# puts vowel_censor("Let's order a pizza") == "LXt's XrdXr X pXzzX"
+# puts vowel_censor("Nitwit, blubber, oddment, tweak") == "NXtwXt, blXbbXr, XddmXnt, twXXk"
+# puts vowel_censor("Supercalifragilisticexpialidocious") == "SXpXrcXlXfrXgXlXstXcXxpXXlXdXcXXXs"
+
+# =========================================================================================================================================================
+
+# def array_print_10
+#     [0,1, 2, 3, 4, 5, 6, 7, 8, 9].each do |x|
+#         return  x
+# end
+
+# puts array_print_10
+
+
+
+# =========================================================================================================================================================
+
+
+# def alphabet_slice(range)
+	
+# 	alphabets = ('a'..'z').to_a.join
+#     alphabets.slice(range)
+	
+	
+# end
+
+
+# puts alphabet_slice((0..3))  # ==> "abcd"
+# puts alphabet_slice((0...3)) # ==> "abc"
+# puts alphabet_slice((0..25)) # ==> "abcdefghijklmnopqrstuvwxyz"
+
+
+# =========================================================================================================================================================
+
+
+# Rubyify
+# ----------------------------------------
+# Write a function that turns regular sentences into (really bad and
+# super long) ruby method names.
+
+def rubyify(sentence)
+    new = sentence.downcase.gsub(/ /, "_")
+    # new = sentence.gsub!(/[\?.]/, "")
+    if new.include?("?")
+    	new.gsub!(/\?/, "")
+    end
+    if new.include?(".")
+    	new.gsub!(/\./, "")
+    end
+    
+  new
+    
+end
+
+puts "---------Rubyify----------"
+puts rubyify("Leave the gun take the canoli.") == "leave_the_gun_take_the_canoli"
+puts rubyify("Driver roll up the partition please") == "driver_roll_up_the_partition_please"
+puts rubyify("Wanna get Cheeseboard pizza?") == "wanna_get_cheeseboard_pizza"
+
+
+
+# ----------------- Switch Roles!
+
+
+
+# Key-Value Swap
+# ----------------------------------------
+# Write a method, #key_value_swap, that accepts a hash as an argument and
+# returns a new hash with all the key / value pairs swapped. Do not use Hash#invert.
+
+def key_value_swap(hash)
+    key  = []
+    value = []
+    
+    hash.each { |x, y| key << x}
+    hash.each { |x, y| value << y}
+    
+    i = 0
+    key2 = []
+    value2 = []
+    hash2 = Hash.new
+    until i == hash.length 
+     key2 << key[i]
+     value2 << value[i]
+     i+=1 
+    end 
+    
+    # p value2
+    # p key2
+    i = 0 
+	until i == hash.length 
+		hash2[value2[i]] = key2[i]
+		i += 1
+		
+	end
+	
+ hash2
+ 
+ 
+# or use one line solution
+ hash.invert
+ 
+end
+
+puts "---------Key Value Swap----------"
+puts key_value_swap({a: :b, c: :d, e: :f}) == {b: :a, d: :c, f: :e}
+puts key_value_swap({1 => "string"}) == {"string" => 1}
+puts key_value_swap({a: :a, 1 => 1}) == {a: :a, 1 => 1}
