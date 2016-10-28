@@ -510,8 +510,6 @@ Define a method, #time_string that accepts 3 arguments: hours, minutes, and seco
 
 
 # =========================================================================================================================================================
-
-
 # Rubyify
 # ----------------------------------------
 # Write a function that turns regular sentences into (really bad and
@@ -519,26 +517,21 @@ Define a method, #time_string that accepts 3 arguments: hours, minutes, and seco
 
 def rubyify(sentence)
     new = sentence.downcase.gsub(/ /, "_")
-    # new = sentence.gsub!(/[\?.]/, "")
-    if new.include?("?")
-    	new.gsub!(/\?/, "")
-    end
-    if new.include?(".")
-    	new.gsub!(/\./, "")
-    end
+     new2 = new.gsub(/[\?\.]/, "")
     
-  new
+    #====== or use this solution
+    
+    # if new.include?("?")
+    # 	new.gsub!(/\?/, "")
+    # end
+    # if new.include?(".")
+    # 	new.gsub!(/\./, "")
+    # end
+    
+  new2
     
 end
 
-puts "---------Rubyify----------"
-puts rubyify("Leave the gun take the canoli.") == "leave_the_gun_take_the_canoli"
-puts rubyify("Driver roll up the partition please") == "driver_roll_up_the_partition_please"
-puts rubyify("Wanna get Cheeseboard pizza?") == "wanna_get_cheeseboard_pizza"
-
-
-
-# ----------------- Switch Roles!
 
 
 
@@ -546,6 +539,12 @@ puts rubyify("Wanna get Cheeseboard pizza?") == "wanna_get_cheeseboard_pizza"
 # ----------------------------------------
 # Write a method, #key_value_swap, that accepts a hash as an argument and
 # returns a new hash with all the key / value pairs swapped. Do not use Hash#invert.
+
+puts "---------Rubyify----------"
+puts rubyify("Leave the gun take the canoli.") == "leave_the_gun_take_the_canoli"
+puts rubyify("Driver roll up the partition please") == "driver_roll_up_the_partition_please"
+puts rubyify("Wanna get Cheeseboard pizza?") == "wanna_get_cheeseboard_pizza"
+
 
 def key_value_swap(hash)
     key  = []
@@ -576,7 +575,7 @@ def key_value_swap(hash)
  hash2
  
  
-# or use one line solution
+ #==or use one line solution
  hash.invert
  
 end
